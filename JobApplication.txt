@@ -1,0 +1,47 @@
+JobApplication
+create table categories
+(
+	id serial primary key ,
+	category_name varchar(50)not null
+);
+insert into categories(category_name)values('Technology'),('Design'),('HR')
+select * from categories
+create table Jobs
+(
+	id serial primary key ,
+	Title varchar(50)not null,
+	category_id int references categories(id),
+	closing_date date 
+);
+insert into Jobs(Title, category_id,closing_date)values
+				('C#-Developer',1,'2023-01-01'),
+				('Php-Developer',1,'2022-01-01'),
+				('JavaScript',1,'2022-03-03')
+select * from Jobs
+
+create table users
+(
+	id serial primary key ,
+	first_name varchar(50)not null,
+	last_name varchar(50)not null,
+	email varchar(50) unique ,
+	phone_number varchar(50)not null,
+	address varchar(50)not null,
+	job_id int references Jobs(id)
+);
+select * from users
+insert into users(first_name,last_name,email,phone_number,address,job_id)values
+				  ('Nasim','Nazarov','Nasim@gmail.com','+888 0624 1502','112',1),
+				  ('Bakhtovar','Rizozoda','Bakhtovar@gmail.com','+992987100301','33',1),
+				  ('Komrom','Akramov','Komrom@gmail.com','+992982225172','Savetskiy',1),
+				   ('Shahrom','Sharipov','Shahrom@gmail.com','+992909050409','Sakhovat',1)
+
+
+
+
+
+
+
+
+
+

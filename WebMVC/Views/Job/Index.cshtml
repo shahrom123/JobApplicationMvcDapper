@@ -1,0 +1,94 @@
+@model List<JobDto>
+<div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+    <main class="w-full flex-grow p-6">
+        <h1 class="text-3xl text-black pb-6 text-center text-dark"> The table of Jobs</h1>
+        <button>
+            <a href="/Job/Create" class="bg-transparent bg-black hover:opacity-100 text-blue-700 font-semibold py-2 px-4 border border-blue-500 ">
+                Add New Job
+            </a>
+        </button>
+                <button>
+        
+                    <a href="/User" class="bg-transparent bg-black hover:opacity-100 text-blue-700 font-semibold py-2 px-4 border border-blue-500 ">
+                        Users
+                    </a>
+                </button>
+                <button>
+                    <a href="/job" class="bg-transparent bg-black hover:opacity-100 text-blue-700 font-semibold py-2 px-4 border border-blue-500 ">
+                        Jobs
+                    </a>
+                </button>
+                <button>
+                    <a href="/category" class="bg-transparent bg-black hover:opacity-100 text-blue-700 font-semibold py-2 px-4 border border-blue-500 ">
+                        Categories
+                    </a>
+                </button>
+        <form action="Job" method="get">
+            <div class="mb-3 mt-3 ">
+                <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                    <input
+                        type="search"
+                        class="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                        placeholder="Search"
+                        aria-label="Search"
+                        name="Title" value="@ViewData["Title"]" 
+                        aria-describedby="button-addon3"/>
+
+                    <!--Search button-->
+                    <button
+                        class="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                        type="submit"
+                        id="button-addon3"
+                        >Search
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="w-full mt-6">
+            <p class="text-xl pb-3 flex items-center">
+                <i class="fas fa-list mr-3"></i> Table Users
+            </p>
+            <div class="bg-white overflow-auto">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="text-left py-1 px-4 uppercase font-semibold text-sm">Id</th>
+                        <th class="text-left py-1 px-4 uppercase font-semibold text-sm">Title</th>
+                        <th class="text-center py-1 px-2 uppercase font-semibold text-sm">Category Id</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Location</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Description </th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Edit</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Delete </th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                    @foreach (var job in Model)
+                    {
+                        <tr>
+                            <td class="text-left py-3 px-4">@job.Id</td>
+                            <td class=" text-left py-3 px-4">@job.Title</td>
+                            <td class="text-left py-3 px-4 cursor-pointer">
+                                <a class="hover:text-blue-500">@job.CategoryId</a>
+                            </td>
+                            <td class="text-left py-3 px-4 cursor-pointer">
+                                <a class="hover:text-blue-500">@job.Location</a>
+                            </td>
+                            <td class="text-left py-3 px-4 cursor-pointer">
+                                <a class="hover:text-blue-500">@job.Description</a>
+                            </td>
+                            <th class="text-left py-3 px-4"> <a class="bg-orange-200 hover:border-zinc-100 text-blue-700 font-semibold hover:text-red py-2 px-4 border border-blue-500 hover:bg-green-500 rounded" href="/Job/update/@job.Id">Edit</a> </th> 
+                            <th class="text-left py-3 px-4"><a class="bg-orange-200	hover:border-zinc-100 text-blue-700 font-semibold hover:text-red py-2 px-4 border border-blue-500 hover:bg-red-400 rounded" href="/Job/delete/@job.Id">delete</a></th>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- AlpineJS -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<!-- Font Awesome -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>

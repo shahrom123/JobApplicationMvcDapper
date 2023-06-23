@@ -1,0 +1,25 @@
+@model JobDto
+<div class="leading-loose m-2">
+    <form action="create" method="post" class="p-10 bg-white rounded shadow-xl w-[50%] m-auto mt-1" >
+        <p class="text-lg text-gray-800 bg-gray-100 font-medium pb-4 text-center  border-6 fs-4 pt-3  rounded-[15px] ">Add New Job</p> 
+        <div class="">
+            <label class=" text-sm text-gray-600" for="cus_name"  >Title</label><br/>
+            <input asp-for="Title" class="w-[50%] px-5  text-gray-700 bg-gray-200 rounded" id="cus_name"  type="text" required="" placeholder="Title" aria-label="Title">
+        </div> 
+        <div class=""> 
+            <label  class="block text-sm text-gray-600" for="cus_name">Category ID</label><br/>
+            <input asp-for="CategoryId" class="w-[50%] px-5  text-gray-700 bg-gray-200 rounded" id="cus_name" type="number" required="" placeholder="CategoryId" aria-label="CategoryId">
+        </div>
+        <div class=""> 
+            <label class="block text-sm text-gray-600" for="cus_name">Location</label><br/>
+            <input asp-for="Location" class="w-[50%] px-5 text-gray-700 bg-gray-200 rounded" id="cus_name"  type="text" required="" placeholder="Your Location" aria-label="Location">
+        </div>
+        <div class="mt-2">
+            <label class=" block text-sm text-gray-600" for="cus_email">Description</label><br/>
+            <input asp-for="Description" class="w-[50%] px-2  text-gray-700 bg-gray-200 rounded" id="cus_email"  type="Text" required="" placeholder="Description" aria-label="Description">
+        </div>
+        <div class="mt-6">
+            <button class="px-4 py-1 text-white font-light tracking-wider  bg-gray-900 rounded"  type="submit">Save</button>
+        </div>
+    </form>
+</div>
